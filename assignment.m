@@ -1,15 +1,16 @@
 clc;clear;close all
+% for test
 %%
 %read data
 cd('F:\临时工作区\海洋随机信号处理作业')
-NRRS443_list=dir('GlobrColor_data\*NRRS443*.nc');
-NRRS490_list=dir('GlobrColor_data\*NRRS490*.nc');
-NRRS555_list=dir('GlobrColor_data\*NRRS555*.nc');
-NRRS670_list=dir('GlobrColor_data\*NRRS670*.nc');
-num_of_data=length(NRRS443_list);
-NRRS443=zeros(332,484,num_of_data);
-NRRS490=NRRS443;NRRS555=NRRS443;NRRS670=NRRS443;
-for ii=1:num_of_data
+NRRS443_list = dir('GlobrColor_data\*NRRS443*.nc');
+NRRS490_list = dir('GlobrColor_data\*NRRS490*.nc');
+NRRS555_list = dir('GlobrColor_data\*NRRS555*.nc');
+NRRS670_list = dir('GlobrColor_data\*NRRS670*.nc');
+num_of_data = ength(NRRS443_list);
+NRRS443 = zeros(332,484,num_of_data);
+NRRS490 = NRRS443;NRRS555=NRRS443;NRRS670=NRRS443;
+for ii = 1:num_of_data
     file_443=strcat('GlobrColor_data\',NRRS443_list(ii).name);
     NRRS443(:,:,ii)=ncread(file_443,'NRRS443_mean');
     file_490=strcat('GlobrColor_data\',NRRS490_list(ii).name);
