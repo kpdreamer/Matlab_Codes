@@ -1,11 +1,13 @@
 clc;clear;close all
 % test for bathymetry plot 
 %%
-m_proj('Mercator','lon',[117 123],'lat',[36 42])
-% m_etopo2('contourf',-100:1:0,'edgecolor','none');
-[elevations,lat,lon]=mygrid_sand2([117 123 36 42]);
-  m_contour(lon,lat,elevations);
-m_gshhs_l('patch',[.5 .8 0],'edgecolor','none');
+m_proj('Mercator','lon',[117 129],'lat',[24 42])
+% m_etopo2('contourf',-7000:20:0,'edgecolor','none');
+[elevations,lon,lat]=m_etopo2([117 129 24 42]);
+elevations(elevations >= 0) = 0;
+elevations(elevations == 0) = -realmin();
+m_contour(lon,lat,-log(-elevations));
+m_gshhs_i('patch',[96/255 96/255 96/255],'edgecolor','k');
 m_grid('linewi',2,'layer','top');
-caxis([-40 0])
-colormap(m_colmap('blue')); 
+% caxis([-1000 50])
+% c_map = m_colmap('blue');
